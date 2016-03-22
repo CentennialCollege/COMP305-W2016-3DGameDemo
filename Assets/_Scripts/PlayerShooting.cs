@@ -9,6 +9,8 @@ public class PlayerShooting : MonoBehaviour {
 	public GameObject bulletImpact;
 	public GameObject explosion;
 
+	public GameController gameController;
+
 	// PRIVATE INSTANCE VARIABLES
 	private Transform _transform;
 
@@ -35,6 +37,7 @@ public class PlayerShooting : MonoBehaviour {
 				if (hit.transform.gameObject.CompareTag ("Barrel")) {
 					Instantiate (this.explosion, hit.point, Quaternion.identity);
 					Destroy (hit.transform.gameObject);
+					this.gameController.ScoreValue += 100;
 				} else {
 
 					Instantiate (this.bulletImpact, hit.point, Quaternion.identity);
